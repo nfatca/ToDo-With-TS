@@ -1,12 +1,17 @@
-import React from 'react';
-const TodoListItem = () => {
+import React from "react";
+
+interface ITodoListItem {
+  item: TodoType;
+}
+
+const TodoListItem: React.FC<ITodoListItem> = ({ item }) => {
   return (
     <li>
-      <p className='checked'>Todo </p>
-      <p> Todo </p>
-      <span className="task-icons" >✖️</span>
+      <p className="checked">Todo </p>
+      <p> {item.task} </p>
+      <span className="task-icons">✖️</span>
     </li>
   );
 };
 
-export default TodoListItem
+export default TodoListItem;
