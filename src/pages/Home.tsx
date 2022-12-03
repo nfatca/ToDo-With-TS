@@ -31,6 +31,23 @@ const Home = () => {
     }
   };
 
+  const toggleTodo: ToggleFn = async (item) => {
+    try {
+      await axios.put(`${url}/${item.id}`, { ...item, isDone: !item.isDone });
+      getTodos();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const deleteTodo: ToggleFn = async (item) => {
+    try {
+      await axios.delete(`${url}/${item.id}`);
+      getTodos();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getTodos();
   }, []);
@@ -38,7 +55,7 @@ const Home = () => {
   return (
     <div className="main">
       <InputForm addTodo={addTodo} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
     </div>
   );
 };

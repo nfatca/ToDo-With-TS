@@ -5,6 +5,12 @@ interface TodoType {
 }
 interface ITodoList {
   todos: TodoType[];
+  toggleTodo: ToggleFn;
+  deleteTodo: Deletefn;
 }
 
 type Addfn = (text: string) => void;
+
+type ToggleFn = (item: TodoType) => void;
+
+type Deletefn = (item: TodoType) => void;
